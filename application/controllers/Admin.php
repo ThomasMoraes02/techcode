@@ -271,7 +271,7 @@ class Admin extends CI_Controller
         $mail->Body = $mailContent;
 
         if(!$mail->sendEmailPHPMailer()) {
-            echo "Mensagem não enviada";
+            echo "Email não enviado";
             echo $mail->ErrorInfo;
         } else {
             echo "Email enviado com sucesso";
