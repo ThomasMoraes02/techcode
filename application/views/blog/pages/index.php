@@ -21,7 +21,7 @@
 				<?php foreach($conteudos as $conteudo): ?>
 				<div class="col-lg-4 col-md-6 mt-4">
 					<div class="card">
-					<img src="<?php echo base_url("artigo_img/" . $conteudo['imagem']) ?>" alt="<?php echo $conteudo['titulo'] ?>" class="img-thumbnail img-fluid mx-auto">
+					<img src="<?php echo base_url("artigo_img/" . $conteudo['imagem']) ?>" alt="<?php echo $conteudo['titulo'] ?>" class="card-img-top"> <!-- img-thumbnail  img-fluid mx-auto -->
 					<div class="card-body">
 						<h5 class="card-title"><?php echo $conteudo['titulo']; ?></h5>
 						<p class="card-text estrutura-descricao"><?php echo character_limiter($conteudo['descricao'],50) ?></p>

@@ -12,7 +12,7 @@
 <body>
 
 <nav class="container">
-    <ul class="nav nav-tabs mt-3">
+    <ul class="nav nav-tabs nav-pills flex-column flex-sm-row mt-3">
         <li class="nav-item">
             <a class="nav-link"  href="<?php echo base_url("Admin/Home") ?>">Home</a>
         </li>

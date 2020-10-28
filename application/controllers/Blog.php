@@ -33,4 +33,14 @@ class Blog extends CI_Controller
 		$this->load->view("blog/pages/conteudo");
 		$this->load->view("blog/estrutura/footer");
 	}
+
+	public function Sobre()
+	{
+		$data['titulo'] = "Techcode - Sobre";
+		$data['Autor'] = "Thomas Vinicius de Moraes";
+		
+		$this->load->view("blog/estrutura/header", $data);
+		$this->load->view("blog/pages/sobre");
+		$this->load->view("blog/estrutura/footer");
+	}
 }

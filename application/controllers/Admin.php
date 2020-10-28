@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Admin extends CI_Controller
 {
     public function __construct()
@@ -211,13 +210,14 @@ class Admin extends CI_Controller
                 "senha" => $this->input->post("senha")
             );
                 $this->Blog_model->cadastrarUsuario($usuario);
-                //$this->sendEmail($usuario['email']);
                 //$this->sendEmailPHPMailer($usuario['email']);
+                //$this->sendEmail($usuario['email']);
                 $this->session->set_flashdata("mensagem", "Usuário cadastrado com sucesso!");
             }
         $this->cadastroUsuario();
     }
 
+    //Envio de email utilizando a biblioteca nativa do PHP "email"
     private function sendEmail($email) //A aplicação deve estar hospedada para que o email seja efetuado
     {
         $this->load->library("email");
@@ -225,11 +225,11 @@ class Admin extends CI_Controller
         //Configurações para envio de emails
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "smtp.gmail.com"; //smtp.gmail.com
-        $config['smtp_port'] = 587; //465 , 587 , 25
+        $config['smtp_port'] = 465; //465 , 587 , 25
         $config['wordwrap'] = TRUE;
         $config['smtp_user'] = "thomoraes02@gmail.com";
         $config['smtp_pass'] = "11092020";
-        $config['charset'] = "UTF-8"; // iso-8859-1
+        $config['charset'] = "UTF-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";
         $config['crlf']     = "\r\n";
@@ -247,34 +247,41 @@ class Admin extends CI_Controller
         }
     }
 
-    private function sendEmailPHPMailer($email) //biblioteca PHP Mailer
+    //Envio de email utilizando a biblioteca PHPMailer
+    private function sendEmailPHPMailer($email)
     {
-        $this->load->library("PHPMailer_lib");
-
-        $mail = $this->PHPMailer_lib->load();
+        // Load PHPMailer library
+        $this->load->library('Phpmailer_lib');
+        
+        // PHPMailer object
+        $mail = $this->phpmailer_lib->load();
 
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = TRUE;
         $mail->Username = "thomoraes02@gmail.com";
         $mail->Password = "11092020";
-        $mail->Port = 587;
+        $mail->Port = 465; //465 25 587 
+        $mail->SMTPOptions = array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true));
+        $mail->SMTPSecure = "ssl"; //tls ssl
+        $mail->Charset = 'UTF-8';
 
-        $mail->setFrom("thomoraes02@gmail.com", "Thomas");
+        $mail->setFrom("thomoraes02@gmail.com", "techcode");
         $mail->addAddress($email);
 
-        $mail->Subject = "Conteúdo Email";
+        $mail->isHTML(true);
 
-        $mail->isHtml(TRUE);
+        $mail->Subject = "Teste PHPMailer";
+        $mail->Body = "Estou aprendendo a enviar email";
 
-        $mailContent = "<h1>Mensagem Email - Email teste - Codeigniter 3</h1>";
-        $mail->Body = $mailContent;
-
-        if(!$mail->sendEmailPHPMailer()) {
+        if(!$mail->send()){
             echo "Email não enviado";
             echo $mail->ErrorInfo;
         } else {
-            echo "Email enviado com sucesso";
+            echo "Email enviado";
         }
+
+        //PORTA: 587 = TLS
+        //PORTA: 465 = SSL
     }
 }

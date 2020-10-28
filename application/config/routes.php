@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //Blog
 $route['default_controller'] = 'blog';
 $route['blog/conteudo'] = 'blog/conteudo';
+$route['blog/sobre'] = 'blog/sobre';
 
 //Admin
 $route['blog/admin'] = 'admin/login';

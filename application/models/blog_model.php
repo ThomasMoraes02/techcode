@@ -56,7 +56,7 @@ class Blog_model extends CI_Model
         $this->db->insert("usuario", $usuario);
     }
 
-    public function getUsuario()
+    public function getUsuario() //Pega todos os usuários cadastrados
     {
        return $this->db->get("usuario");
     }

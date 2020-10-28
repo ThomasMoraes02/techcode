@@ -34,7 +34,8 @@ Os auxiliares utilizados foram:
 PHP Mailer
 **************************
 
-Está sendo utilizado duas maneiras de envio de e-mails
+A biblioteca PHPMailer para envio de email está sendo utilizada também.
+Por estar sendo utilizado o servidor o local, o e-mail final está sendo enviado para uma conta com permissões de acesso a baixa segurança
 
 **************************
 CRUD
