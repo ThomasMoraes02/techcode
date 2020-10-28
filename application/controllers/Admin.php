@@ -5,7 +5,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model("Blog_model");
-        $this->load->helper("text");
+        $this->load->helper(array("text","auxiliar_helper"));
 
         //Armazenar cache da página por 24 horas
         //$this->output->cache(1440);
@@ -40,6 +40,7 @@ class Admin extends CI_Controller
             } else {
                 //SE usuário for encontrado na base de dados, armazene na sessão
                 $this->session->set_userdata('usuario', $usuario);
+                $this->session->set_flashdata("welcome", "Seja bem vindo " . formataNome($this->session->userdata("usuario")['nome']));
                 $this->home();
             }
         }

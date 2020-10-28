@@ -10,4 +10,12 @@ function formataData($data)
     return "$newDataFormat[2]/$newDataFormat[1]/$newDataFormat[0]";
 }
 
+function formataNome($data)
+{
+    $nomeCompleto = explode(" ", $data);
+    $firstName = $nomeCompleto[0];
+
+    return $firstName;
+}
+
 ?>

@@ -1,7 +1,8 @@
 <section class="container">
 <div class="admin-home">
 	<h1 class="text-center mt-3">Techcode</h1>
-	<p class="lead alert-warning text-center"><?php echo $this->session->flashdata("mensagem"); ?></p>
+	<p class="lead alert-success text-center rounded "><?php echo $this->session->flashdata("welcome"); ?></p>
+	<p class="lead alert-warning text-center rounded"><?php echo $this->session->flashdata("mensagem"); ?></p>
         <div class="col-lg-12">
 			<table class="table table-hover table-dark table-bordered table-responsive-lg">
 			<thead class="thead-dark">
