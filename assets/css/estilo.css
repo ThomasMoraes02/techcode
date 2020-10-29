@@ -92,7 +92,7 @@ body * {
 .admin-home {
     background: #000;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 30px;
     border: 2px solid #000;
     border-radius: 3px;
 }
@@ -101,6 +101,19 @@ body * {
     color: #fff;
     padding-bottom: 10px;
     border-bottom: 2px solid #fff;
+}
+
+.admin-grafico {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.admin-grafico h1 {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    font-size: 28px;
+    border-radius: 2px;
 }
 
 .admin-login {
@@ -120,6 +133,21 @@ body * {
     color: #fff;
     background-color: #000;
     border-radius: 4px;
+}
+
+.admin-paginacao li {
+    background-color: #343a40;
+    color: #000;
+    border-radius: 1px;
+}
+
+.admin-paginacao li a {
+    color: #fff;
+}
+
+.admin-paginacao li:hover {
+    color: #343a40;
+    background: #007bff;
 }
 
 .rodape-admin {

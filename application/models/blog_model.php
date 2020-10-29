@@ -49,6 +49,16 @@ class Blog_model extends CI_Model
         $this->db->delete("conteudo");
     }
 
+    public function quantidadeConteudo()
+    {
+        return $this->db->count_all('conteudo');
+    }
+
+    public function quantidadeCategoria()
+    {
+        return $this->db->select("categoria")->from("conteudo")->group_by("categoria")->count_all_results();
+    }
+
     //Modelo de dados - Usuário
 
     public function cadastrarUsuario($usuario) //Cadastra usuário novo
@@ -60,4 +70,29 @@ class Blog_model extends CI_Model
     {
        return $this->db->get("usuario");
     }
+
+    public function alterarCadastro($id, $usuario)
+    {
+        $this->db->where("id", $id);
+        $this->db->update("usuario", $usuario);
+    }
+
+    //Paginação
+    public function getContentPage($limit = null , $offset = null)  
+    {
+        if($limit) {
+            $this->db->limit($limit, $offset);
+        }
+
+        return $this->db->get("conteudo")->result_array();
+    }
+     //Limit = numero de registros retornados por consulta
+    //offset = qual pagina de registroas a ser exibida
+
+    public function CountAll() //Conta quantos registros a tabela "conteudo" possui
+    {
+        return $this->db->count_all("conteudo");
+    }
+
+   
 }

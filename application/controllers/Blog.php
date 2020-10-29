@@ -7,17 +7,18 @@ class Blog extends CI_Controller
 		parent::__construct();
 		$this->load->model("Blog_model");
 		$this->load->helper(array("text","typography","auxiliar_helper"));
-
-		//$this->output->cache(1440);
+		
+		//Armazenar cache da página por 24 horas
+        //$this->output->cache(1440);
 	}
 
 	public function index()
-	{
+	{	
 		$data['titulo'] = "Techcode";
 		$data['conteudos'] = $this->Blog_model->listarConteudo();
 		
 		$this->load->view("blog/estrutura/header", $data);
-		$this->load->view("blog/pages/index");
+		$this->load->view("blog/pages/index",$data);
 		$this->load->view("blog/estrutura/footer");
 	}
 

@@ -61,7 +61,11 @@ $route['admin'] = 'admin/login';
 $route['admin/home'] = 'admin/home';
 $route['admin/cadastrar-conteudo'] = 'admin/cadastrar';
 $route['admin/cadastrar-usuario'] = 'admin/cadastroUsuario';
+$route['admin/gerenciar'] = 'admin/gerenciar';
 $route['admin/logout'] = 'admin/logout'; 
+
+//Admin paginação
+$route['admin/home/(:num)'] = 'admin/home'; 
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

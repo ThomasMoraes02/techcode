@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/bootstrap.min.css") ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/style.css") ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/estilo.css") ?>">
     <title><?php echo $titulo ?></title>
 </head>
 <body>
@@ -21,6 +21,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("admin/cadastrar-usuario") ?>">Cadastrar Usuário</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url("admin/gerenciar") ?>">Gerênciar</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("admin/logout"); ?>">Sair</a>

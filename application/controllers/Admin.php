@@ -31,7 +31,7 @@ class Admin extends CI_Controller
         else 
         {
             $email = $this->input->post("email");
-            $senha = $this->input->post("senha");
+            $senha = md5($this->input->post("senha"));
             $usuario = $this->Blog_model->acesso($email, $senha);
 
             if($usuario == FALSE) {
@@ -53,8 +53,51 @@ class Admin extends CI_Controller
             $this->login();
         }
 
+        //Paginação
+        $this->load->library("pagination");
+
+        //Configurações de funcionamento
+		$config['base_url'] = base_url("admin/home");          //Onde a paginação será retornada
+		$config['per_page'] = 2;                               //Número de registros por página
+		$config['num_links'] = 3;                              //Número de links na paginação 
+		$config['uri_segment'] = 3;                            //Segmento da url
+        $config['total_rows'] = $this->Blog_model->CountAll(); //número total de registros da tabela
+
+        //Configurações de CSS
+        $config['full_tag_open'] = "<ul class='pagination admin-paginacao justify-content-center'>";//Tag de abertura 
+        $config['full_tag_close'] = "</ul>";                                                        //Tag de fechamento
+        $config['first_link'] = FALSE;
+        $config['last_link'] = FALSE;
+        $config['first_tag_open'] = "<li>" ;
+        $config['first_tag_close'] = "</li>" ;
+        $config['prev_link'] = "Anterior";
+        $config['prev_tag_open'] = "<li class='prev page-item page-link'>" ;
+        $config['prev_tag_close'] = "</li>" ;
+        $config['next_link'] = "Próximo";
+        $config['next_tag_open'] = "<li class='next page-item page-link'>";
+        $config['next_tag_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tag_close'] = "</li>";
+        $config['cur_tag_open'] = "<li class='active page-item' aria-current='page'><a class='page-link' href='#'>";
+        $config['cur_tag_close'] = "</a></li>";
+        $config['num_tag_open'] = "<li class='page-item page-link'>";
+        $config['num_tag_close'] = "<li>";
+
+
+		$this->pagination->initialize($config);
+
+		$data['pagination'] = $this->pagination->create_links();
+
+
+		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data['conteudos'] = $this->Blog_model->getContentPage($config['per_page'], $offset);
+        //fim paginação
+
+
         $data['titulo'] = "DevTho - Home";
-        $data['conteudos'] = $this->Blog_model->listarConteudo();
+        //$data['conteudos'] = $this->Blog_model->listarConteudo();
+        $data['artigos'] = $this->Blog_model->quantidadeConteudo();
+        $data['categorias'] = $this->Blog_model->quantidadeCategoria();
 		
 		$this->load->view("admin/estrutura/header", $data);
 		$this->load->view("admin/pages/home");
@@ -208,7 +251,7 @@ class Admin extends CI_Controller
             $usuario = array(
                 "nome" => $this->input->post("nome"),
                 "email" => $this->input->post("email"),
-                "senha" => $this->input->post("senha")
+                "senha" => md5($this->input->post("senha"))
             );
                 $this->Blog_model->cadastrarUsuario($usuario);
                 //$this->sendEmailPHPMailer($usuario['email']);
@@ -216,6 +259,44 @@ class Admin extends CI_Controller
                 $this->session->set_flashdata("mensagem", "Usuário cadastrado com sucesso!");
             }
         $this->cadastroUsuario();
+    }
+
+    public function Gerenciar()
+    {
+        if($this->session->userdata("usuario") != TRUE) {
+            $this->login();
+        }
+
+        $data['titulo'] = "DevTho - Gerênciar";
+        
+		$this->load->view("admin/estrutura/header", $data);
+		$this->load->view("admin/pages/gerenciar");
+		$this->load->view("admin/estrutura/footer");
+    }
+
+    public function gerenciarUsuario()
+    {
+        if($this->session->userdata("usuario") != TRUE) {
+            $this->login();
+        }
+
+        $this->form_validation->set_rules("nome", "Nome", "required");
+        $this->form_validation->set_rules("email", "E-mail", "required");
+        $this->form_validation->set_rules("senha", "Senha", "required");
+
+        if($this->form_validation->run()) {
+            $usuario = array(
+                "nome" => $this->input->post("nome"),
+                "email" => $this->input->post("email"),
+                "senha" => md5($this->input->post("senha"))
+            );
+            if($this->Blog_model->alterarCadastro($this->input->post("hidden_id"), $usuario) == TRUE) {
+                $this->session->set_flashdata("mensagem", "Erro! Cadastro não atualizado");
+            } else {
+                $this->session->set_flashdata("mensagem", "Cadastro atualizado com sucesso");
+            }
+        }  
+        $this->Login();
     }
 
     //Envio de email utilizando a biblioteca nativa do PHP "email"
@@ -226,7 +307,7 @@ class Admin extends CI_Controller
         //Configurações para envio de emails
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "smtp.gmail.com"; //smtp.gmail.com
-        $config['smtp_port'] = 465; //465 , 587 , 25
+        $config['smtp_port'] = 587; //465 , 587 , 25
         $config['wordwrap'] = TRUE;
         $config['smtp_user'] = "thomoraes02@gmail.com";
         $config['smtp_pass'] = "11092020";
@@ -281,7 +362,6 @@ class Admin extends CI_Controller
         } else {
             echo "Email enviado";
         }
-
         //PORTA: 587 = TLS
         //PORTA: 465 = SSL
     }

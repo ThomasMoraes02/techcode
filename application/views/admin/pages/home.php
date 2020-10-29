@@ -1,4 +1,19 @@
 <section class="container">
+	<div class="admin-grafico">
+		<div class="row">
+			<?php if($artigos && $categorias): ?>
+			<div class="col-sm-6">
+				<h1>Artigos: <span class="badge badge-secondary"><?php echo $artigos ?></span></h1>
+			</div>
+			<div class="col-sm-6">
+				<h1>Categorias: <span class="badge badge-secondary"><?php echo $categorias ?></span></h1>
+			</div>
+			<?php endif ?>
+		</div>
+	</div>
+</section>
+
+<section class="container">
 <div class="admin-home">
 	<h1 class="text-center mt-3">Techcode</h1>
 	<p class="lead alert-success text-center rounded "><?php echo $this->session->flashdata("welcome"); ?></p>
@@ -29,5 +44,7 @@
 			</tbody>
 			</table>
     </div>
+	<?php echo $pagination ?>
     </div>
 </section>
+
