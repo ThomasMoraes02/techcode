@@ -101,7 +101,8 @@ class Admin extends CI_Controller
         //$data['conteudos'] = $this->Blog_model->listarConteudo();
         $data['artigos'] = $this->Blog_model->quantidadeConteudo();
         $data['categorias'] = $this->Blog_model->quantidadeCategoria();
-        $data['tipoCategoria'] = $this->Blog_model->categorias();
+        //$data['tipoCategoria'] = $this->Blog_model->categorias();
+        $data['queryCategoria'] = $this->Blog_model->queryCategoria();
 		
 		$this->load->view("admin/estrutura/header", $data);
 		$this->load->view("admin/pages/home");

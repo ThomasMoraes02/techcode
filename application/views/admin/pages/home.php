@@ -54,17 +54,37 @@
 		<div class="admin-categorias">
 			<div class="row">
 				<div class="col-sm-6">
-					<table class="table table-sm table-dark">
+					<table class="table table-sm table-dark text-center">
 						<thead>
 							<tr>
-								<th scope="col" class="text-center">Categorias:</th>
+								<th scope="col" class="">Categoria</th>
+								<th scope="col" class="">Quantidade</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php if($tipoCategoria): ?>
-								<?php foreach($tipoCategoria as $categoria): ?>
+							<?php if($queryCategoria): ?>
+								<?php foreach($queryCategoria as $chave => $valor): ?>
 									<tr>
-										<th> - <?php echo $categoria['categoria'] ?></th>
+										<th><?php echo $valor['categoria']?> </th>
+										<th><?php echo $valor['quantidade'] ?> </th>
+									</tr>
+								<?php endforeach ?>
+							<?php endif ?>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-sm-6">
+				<table class="table table-sm table-dark">
+						<thead>
+							<tr>
+								<th scope="col" class="text-center">Imagens:</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							<?php if($conteudos): ?>
+								<?php foreach($conteudos as $conteudo): ?>
+									<tr>
+										<th><a href="<?php echo base_url("artigo_img/".$conteudo['imagem']) ?>" target="_black"><?php echo $conteudo['titulo'] ?></a></th>
 									</tr>
 								<?php endforeach ?>
 							<?php endif ?>
@@ -74,6 +94,3 @@
 			</div>
 		</div>
 </section>
-
-
-

@@ -67,6 +67,13 @@ class Blog_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function queryCategoria()
+    {
+        $sql = "SELECT categoria, COUNT(*) AS quantidade FROM conteudo GROUP BY categoria";
+
+        return $this->db->query($sql)->result_array();
+    }
+
     //Modelo de dados - Usuário
 
     public function cadastrarUsuario($usuario) //Cadastra usuário novo

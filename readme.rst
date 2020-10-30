@@ -43,4 +43,13 @@ CRUD
 **************************
 
 O sistema de administração do blog possui Cadastro de Conteúdo e Usuários, Update e Delete de dados. 
+Possui outras consultas no banco para paginação, registros, categorias etc..
 
+
+**************************
+OBSERVAÇÕES
+**************************
+
+- A paginação na tela inicial do Blog pois não era extremamente necessário.
+- As imagens para Upload de artigos devem possuir largura de 540px e altura de 230px para que no Blog possuam as mesmas dimensões. Recomendado criar um retângulo utilizando o Figma e importar a imagem em PNG para formatar.
+- O envio de e-mail via a biblioteca PHPMailer está comentada pois como é utiizado em servidor local gera erros se o e-mail de destinatário não estiver liberado para minima segurança.  
