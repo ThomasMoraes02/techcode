@@ -18,7 +18,7 @@ class Blog extends CI_Controller
 
 		 //Configurações de funcionamento
 		 $config['base_url'] = base_url("Blog");          		//Onde a paginação será retornada
-		 $config['per_page'] = 3;                               //Número de registros por página
+		 $config['per_page'] = "";//3;                          //Número de registros por página
 		 $config['num_links'] = 3;                              //Número de links na paginação 
 		 $config['uri_segment'] = 2;                            //Segmento da url
 		 $config['total_rows'] = $this->Blog_model->CountAll(); //número total de registros da tabela

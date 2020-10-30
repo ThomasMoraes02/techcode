@@ -134,6 +134,13 @@ class Admin extends CI_Controller
         if($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata("mensagem", "Preencha todos os campos!");
         } else {
+
+            /*
+            IMPORTANTE !!!
+            As imagens devem estar em formato PNG - width: 540px height: 230px
+            Recomendado criar um retângulo com essas dimensões utilizando o FIGMA e exportar
+            para que no blog os artigos possuam o mesmo tamanho 
+            */
             $path = "artigo_img";
             if(!is_dir($path)) {
                 mkdir($path, 0777);

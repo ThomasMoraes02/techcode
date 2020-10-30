@@ -1,8 +1,8 @@
 <section class="">
 		<div class="mx-auto text-center">
-			<div class="slide">
-				<img src="<?php echo base_url("/assets/img/png/container-black.png") ?>" alt="Galeria-Blog" class="img-fluid">
-				<img src="<?php echo base_url("/assets/img/png/container-white.png") ?>" alt="Galeria-Blog" class="img-fluid">
+			<div class=""> <!-- slide -->
+				<!--<img src="<?php echo base_url("/assets/img/png/container-black.png") ?>" alt="Galeria-Blog" class="img-fluid">
+				<img src="<?php echo base_url("/assets/img/png/container-white.png") ?>" alt="Galeria-Blog" class="img-fluid"> -->
 			</div>
 		</div>
 </section>

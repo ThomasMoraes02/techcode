@@ -26,6 +26,7 @@
 					<th scope="col">Titulo</th>
 					<th scope="col">Categoria</th>
 					<th scope="col">Descrição</th>
+					<th scope="col">Publicado</th>
 					<th scope="col">Alterar</th>
 					<th scope="col">Deletar</th>
 				</tr>
@@ -37,6 +38,7 @@
 						<td><?php echo $conteudo['titulo'] ?></td>
 						<td><?php echo $conteudo['categoria'] ?></td>
                         <td><?php echo character_limiter($conteudo['descricao'],50) ?></td>
+                        <td><?php echo formataData($conteudo['create']) ?></td>
                         <td><a href="<?php echo base_url("admin/alterar/" . $conteudo['id']) ?>"><img class="mx-auto d-flex" src="<?php echo base_url("/assets/img/png/spreadsheet-3x.png") ?>" ></a></td>	
                         <td><a href="<?php echo base_url("admin/deletar/" . $conteudo['id']) ?>"><img class="mx-auto d-flex" src="<?php echo base_url("/assets/img/png/trash-3x.png") ?>"></a></td>	
 				</tr>
