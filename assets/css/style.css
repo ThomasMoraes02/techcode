@@ -150,6 +150,27 @@ body * {
     background: #007bff;
 }
 
+.admin-filtro {
+    color: #fff;
+    background: #000;
+    margin-top: 20px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.admin-filtro label {
+    font-size: 18px;
+}
+
+.admin-filtro button {
+    margin-top: 10px;
+}
+
+.admin-categorias table {
+    margin-top: 40px;
+    border: 2px solid #000;
+}
+
 .rodape-admin {
     margin-top: 60px;
     font-size: 14px;

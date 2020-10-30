@@ -61,7 +61,7 @@ class Admin extends CI_Controller
 		$config['per_page'] = 2;                               //Número de registros por página
 		$config['num_links'] = 3;                              //Número de links na paginação 
 		$config['uri_segment'] = 3;                            //Segmento da url
-        $config['total_rows'] = $this->Blog_model->CountAll(); //número total de registros da tabela
+        $config['total_rows'] = $this->Blog_model->CountAll(); //Número total de registros da tabela
 
         //Configurações de CSS
         $config['full_tag_open'] = "<ul class='pagination admin-paginacao justify-content-center'>";//Tag de abertura 
@@ -83,21 +83,25 @@ class Admin extends CI_Controller
         $config['num_tag_open'] = "<li class='page-item page-link'>";
         $config['num_tag_close'] = "<li>";
 
-
+        //Iniciar paginação
 		$this->pagination->initialize($config);
 
+        //Criar paginação
 		$data['pagination'] = $this->pagination->create_links();
 
-
-		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        //Qual segmento da url
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        
+        //O conteúdo da paginação será as configurações passadas acima
 		$data['conteudos'] = $this->Blog_model->getContentPage($config['per_page'], $offset);
-        //fim paginação
+        //Fim paginação
 
 
-        $data['titulo'] = "DevTho - Home";
+        $data['titulo'] = "Techcode - Home";
         //$data['conteudos'] = $this->Blog_model->listarConteudo();
         $data['artigos'] = $this->Blog_model->quantidadeConteudo();
         $data['categorias'] = $this->Blog_model->quantidadeCategoria();
+        $data['tipoCategoria'] = $this->Blog_model->categorias();
 		
 		$this->load->view("admin/estrutura/header", $data);
 		$this->load->view("admin/pages/home");
@@ -168,7 +172,7 @@ class Admin extends CI_Controller
         $id = $this->uri->segment(3);
         $conteudo = $this->Blog_model->getIdConteudo($id);
 
-        $data['titulo'] = "DevTho - Alterar";
+        $data['titulo'] = "Techcode - Alterar";
         $data['conteudo'] = $conteudo;
 		
 		$this->load->view("admin/estrutura/header", $data);
@@ -207,11 +211,11 @@ class Admin extends CI_Controller
         $conteudo = $this->Blog_model->getIdConteudo($id);
 
         //SE o conteudo['imagem'] existir, apague o arquivo e delete da base de dados
-        if(unlink("artigo_img/{$conteudo['imagem']}") == FALSE) {
-            $this->session->set_flashdata("mensagem", "Erro! Conteúdo não deletado");
-        } else {
+        if(($conteudo['imagem'] == NULL) || (unlink("artigo_img/{$conteudo['imagem']}"))) {
             $this->Blog_model->deletarConteudo($id);
             $this->session->set_flashdata("mensagem", "Conteúdo deletado com sucesso!");
+        }  else {
+            $this->session->set_flashdata("mensagem", "Erro! Conteúdo não deletado");
         }
         $this->Home();
     }

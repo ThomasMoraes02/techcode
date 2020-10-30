@@ -48,3 +48,30 @@
     </div>
 </section>
 
+<section class="container">
+		<div class="admin-categorias">
+			<div class="row">
+				<div class="col-sm-6">
+					<table class="table table-sm table-dark">
+						<thead>
+							<tr>
+								<th scope="col" class="text-center">Categorias:</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php if($tipoCategoria): ?>
+								<?php foreach($tipoCategoria as $categoria): ?>
+									<tr>
+										<th> - <?php echo $categoria['categoria'] ?></th>
+									</tr>
+								<?php endforeach ?>
+							<?php endif ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+</section>
+
+
+

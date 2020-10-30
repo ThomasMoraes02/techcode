@@ -14,6 +14,7 @@ As bibliotecas utilizadas foram:
 - Session 
 - Database
 - Email
+- Pagination
 
 **************************
 HOOKS

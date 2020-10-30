@@ -67,5 +67,8 @@ $route['admin/logout'] = 'admin/logout';
 //Admin paginação
 $route['admin/home/(:num)'] = 'admin/home'; 
 
+//blog paginação
+$route['Blog/(:num)'] = 'blog';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

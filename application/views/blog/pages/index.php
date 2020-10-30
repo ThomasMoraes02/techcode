@@ -35,5 +35,6 @@
 				<?php endforeach ?>
 				<?php endif ?>
 			</div>
+			<?php echo $pagination ?>
 		</div>
 </section>
