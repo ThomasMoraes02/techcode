@@ -15,7 +15,7 @@
 </section>
 
 <section class="container">
-			<div class="col-md-12">
+			<div class="col-md-12 blog-categoria">
 				<?php echo form_open("Blog/searchCategoria") ?>
 				<form>
 					<div class="row d-flex align-items-center">

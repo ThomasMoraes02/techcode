@@ -32,6 +32,4 @@
             <a class="nav-link disabled">Usuário: <?php echo $this->session->userdata("usuario")['nome'] ?> </a>
         </li>
     </ul>
-
-
 </nav>
