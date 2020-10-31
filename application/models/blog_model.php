@@ -74,6 +74,16 @@ class Blog_model extends CI_Model
         return $this->db->query($sql)->result_array();
     }
 
+    public function buscaCategoria($categoria)
+    {
+        if($categoria == 'todas') {
+            return $this->db->get("conteudo")->result_array();
+        } else {
+            $this->db->where("categoria", $categoria);
+        return $this->db->get("conteudo")->result_array();
+        }   
+    }
+
     //Modelo de dados - Usuário
 
     public function cadastrarUsuario($usuario) //Cadastra usuário novo

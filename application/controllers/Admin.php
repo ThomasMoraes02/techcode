@@ -115,7 +115,7 @@ class Admin extends CI_Controller
             $this->login();
         }
 
-        $data['titulo'] = "DevTho - Cadastrar Conteúdo";
+        $data['titulo'] = "Techcode - Cadastrar Conteúdo";
         
 		$this->load->view("admin/estrutura/header", $data);
 		$this->load->view("admin/pages/cadastrar");
@@ -240,7 +240,7 @@ class Admin extends CI_Controller
             $this->login();
         }
 
-        $data['titulo'] = "DevTho - Cadastrar Usuário";
+        $data['titulo'] = "Techcode - Cadastrar Usuário";
         
 		$this->load->view("admin/estrutura/header", $data);
 		$this->load->view("admin/pages/cadastrarUsuario");
@@ -279,7 +279,7 @@ class Admin extends CI_Controller
             $this->login();
         }
 
-        $data['titulo'] = "DevTho - Gerênciar";
+        $data['titulo'] = "Techcode - Gerênciar";
         
 		$this->load->view("admin/estrutura/header", $data);
 		$this->load->view("admin/pages/gerenciar");

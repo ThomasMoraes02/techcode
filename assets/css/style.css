@@ -33,6 +33,10 @@ body * {
     margin-bottom: 1rem;
 }
 
+.blog-categoria button {
+    margin-top: 10px;
+}
+
 .rodape-blog {
     margin-top: 100px;
 }

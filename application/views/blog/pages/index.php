@@ -15,6 +15,33 @@
 </section>
 
 <section class="container">
+			<div class="col-md-12">
+				<?php echo form_open("Blog/searchCategoria") ?>
+				<form>
+					<div class="row d-flex align-items-center">
+					<div class="col-md-2">
+							<label for="categoria" class="lead">Filtrar Categorias:</label>
+					</div>
+					<div class="col-md-8">
+							<select class="form-control form-control-sm" id="categoria" name="categoria">
+								<option value="todas">Todas</option>
+								<?php if($categorias): ?>
+									<?php foreach($categorias as $categoria): ?>
+										<option value="<?php echo $categoria['categoria'] ?>"><?php echo $categoria['categoria'] ?></option>
+									<?php endforeach ?>
+								<?php endif ?>
+							</select>
+					</div>
+					<div class="col-md-2">
+						<button class="btn btn-dark btn-block" type="submit">Buscar</button>
+					</div>
+					</div>
+				</form>
+				<?php form_close() ?>
+		</div>
+</section>		
+
+<section class="container">
 		<div class="estrutura-conteudo">
 			<div class="row">
 				<?php if($conteudos == TRUE): ?>
@@ -35,6 +62,8 @@
 				<?php endforeach ?>
 				<?php endif ?>
 			</div>
-			<?php echo $pagination ?>
+	
+			<?php //echo $pagination ?>
+			
 		</div>
 </section>

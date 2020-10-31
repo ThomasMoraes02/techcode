@@ -12,13 +12,13 @@ class Blog extends CI_Controller
         //$this->output->cache(1440);
 	}
 
-	public function index()
+	public function index($data = null)
 	{	
 		$this->load->library("pagination");
 
 		 //Configurações de funcionamento
 		 $config['base_url'] = base_url("Blog");          		//Onde a paginação será retornada
-		 $config['per_page'] = "";//3;                          //Número de registros por página
+		 $config['per_page'] = ""; //3                          //Número de registros por página
 		 $config['num_links'] = 3;                              //Número de links na paginação 
 		 $config['uri_segment'] = 2;                            //Segmento da url
 		 $config['total_rows'] = $this->Blog_model->CountAll(); //número total de registros da tabela
@@ -54,6 +54,7 @@ class Blog extends CI_Controller
 
 		$data['titulo'] = "Techcode";
 		//$data['conteudos'] = $this->Blog_model->listarConteudo();
+		$data['categorias'] = $this->Blog_model->categorias();
 
 		$this->load->view("blog/estrutura/header", $data);
 		$this->load->view("blog/pages/index",$data);
@@ -80,6 +81,19 @@ class Blog extends CI_Controller
 		
 		$this->load->view("blog/estrutura/header", $data);
 		$this->load->view("blog/pages/sobre");
+		$this->load->view("blog/estrutura/footer");
+	}
+
+	public function searchCategoria()
+	{
+		$categoria = $this->input->post("categoria");
+		
+		$data['titulo'] = "Techcode";
+		$data['conteudos'] = $this->Blog_model->buscaCategoria($categoria);
+		$data['categorias'] = $this->Blog_model->categorias();
+
+		$this->load->view("blog/estrutura/header", $data);
+		$this->load->view("blog/pages/index",$data);
 		$this->load->view("blog/estrutura/footer");
 	}
 }
