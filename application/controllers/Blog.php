@@ -18,7 +18,7 @@ class Blog extends CI_Controller
 
 		 //Configurações de funcionamento
 		 $config['base_url'] = base_url("Blog");          		//Onde a paginação será retornada
-		 $config['per_page'] = ""; //3                          //Número de registros por página
+		 $config['per_page'] = 6; //3                          //Número de registros por página
 		 $config['num_links'] = 3;                              //Número de links na paginação 
 		 $config['uri_segment'] = 2;                            //Segmento da url
 		 $config['total_rows'] = $this->Blog_model->CountAll(); //número total de registros da tabela
@@ -84,12 +84,27 @@ class Blog extends CI_Controller
 		$this->load->view("blog/estrutura/footer");
 	}
 
-	public function searchCategoria()
+	public function searchCategoria() //Busca por categoria
 	{
 		$categoria = $this->input->post("categoria");
 		
 		$data['titulo'] = "Techcode";
+		$data['pagination'] = NULL;
 		$data['conteudos'] = $this->Blog_model->buscaCategoria($categoria);
+		$data['categorias'] = $this->Blog_model->categorias();
+
+		$this->load->view("blog/estrutura/header", $data);
+		$this->load->view("blog/pages/index",$data);
+		$this->load->view("blog/estrutura/footer");
+	}
+
+	public function searchConteudo() //Busca por categoria
+	{
+		$conteudo = $this->input->post("conteudo");
+		
+		$data['titulo'] = "Techcode";
+		$data['pagination'] = NULL;
+		$data['conteudos'] = $this->Blog_model->buscaConteudo($conteudo);
 		$data['categorias'] = $this->Blog_model->categorias();
 
 		$this->load->view("blog/estrutura/header", $data);

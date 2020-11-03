@@ -84,6 +84,18 @@ class Blog_model extends CI_Model
         }   
     }
 
+    public function buscaConteudo($conteudo)
+    {
+        if ($conteudo != TRUE) {
+            return null;
+        } else {
+            $this->db->select("*");
+            $this->db->like("titulo", $conteudo);
+            return $this->db->get("conteudo")->result_array();
+        }
+
+    }
+
     //Modelo de dados - Usuário
 
     public function cadastrarUsuario($usuario) //Cadastra usuário novo

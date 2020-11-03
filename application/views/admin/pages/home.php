@@ -65,7 +65,7 @@
 							<?php if($queryCategoria): ?>
 								<?php foreach($queryCategoria as $chave => $valor): ?>
 									<tr>
-										<th><?php echo $valor['categoria']?> </th>
+										<th><?php echo $valor['categoria'] ?></th>
 										<th><?php echo $valor['quantidade'] ?> </th>
 									</tr>
 								<?php endforeach ?>
