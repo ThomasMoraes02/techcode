@@ -54,7 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'blog';
 $route['blog/conteudo(:num)'] = 'blog/conteudo';
 $route['blog/sobre'] = 'blog/sobre';
-$route['blog/pesquisar'] = 'blog/searchcategoria';
+$route['blog/pesquisar-categoria'] = 'blog/searchcategoria';
+$route['blog/pesquisar-conteudo'] = 'blog/searchconteudo';
 
 //Admin
 $route['admin'] = 'admin/login';
@@ -68,7 +69,7 @@ $route['admin/alterar/(:num)'] = 'admin/alterar';
 //Admin paginação
 $route['admin/home/(:num)'] = 'admin/home'; 
 
-//blog paginação
+//Blog paginação
 $route['Blog/(:num)'] = 'blog';
 
 

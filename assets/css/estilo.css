@@ -179,11 +179,6 @@ body * {
     border: 2px solid #000;
 }
 
-.rodape-admin {
-    margin-top: 60px;
-    font-size: 14px;
-}
-
 .rodape-admin nav a {
     font-size: 16px;
 }

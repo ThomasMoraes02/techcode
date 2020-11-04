@@ -8,9 +8,8 @@ class Blog_model extends CI_Model
         $this->load->database();
     }
 
-    //Modelo de dados - Login
-
-    public function acesso($email, $senha) //Login para acesso a admin
+    //Modelo de dados - Admin Login
+    public function acesso($email, $senha)
     {
         $this->db->where('email', $email);
         $this->db->where('senha', $senha);
@@ -18,8 +17,7 @@ class Blog_model extends CI_Model
         return $usuario;
     }
 
-    //Modelo de dados - Conteudo
-
+    //Modelo de dados - Admin
     public function cadastrarConteudo($conteudo) //Cadastra conteúdo
     {
         $this->db->insert("conteudo", $conteudo);
@@ -74,6 +72,25 @@ class Blog_model extends CI_Model
         return $this->db->query($sql)->result_array();
     }
 
+      //Modelo de dados - Admin Usuário
+
+      public function cadastrarUsuario($usuario) //Cadastra usuário novo
+      {
+          $this->db->insert("usuario", $usuario);
+      }
+  
+      public function getUsuario() //Pega todos os usuários cadastrados
+      {
+         return $this->db->get("usuario");
+      }
+  
+      public function alterarCadastro($id, $usuario) //Altera registro de usuário
+      {
+          $this->db->where("id", $id);
+          $this->db->update("usuario", $usuario);
+      }
+
+    //Modelo de dados - Blog
     public function buscaCategoria($categoria)
     {
         if($categoria == 'todas') {
@@ -93,27 +110,7 @@ class Blog_model extends CI_Model
             $this->db->like("titulo", $conteudo);
             return $this->db->get("conteudo")->result_array();
         }
-
     }
-
-    //Modelo de dados - Usuário
-
-    public function cadastrarUsuario($usuario) //Cadastra usuário novo
-    {
-        $this->db->insert("usuario", $usuario);
-    }
-
-    public function getUsuario() //Pega todos os usuários cadastrados
-    {
-       return $this->db->get("usuario");
-    }
-
-    public function alterarCadastro($id, $usuario) //Altera registro de usuário
-    {
-        $this->db->where("id", $id);
-        $this->db->update("usuario", $usuario);
-    }
-
     
     //Paginação
     public function getContentPage($limit = null , $offset = null)  
@@ -129,6 +126,4 @@ class Blog_model extends CI_Model
     {
         return $this->db->count_all("conteudo");
     }
-
-   
 }

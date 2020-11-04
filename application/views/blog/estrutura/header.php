@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/bootstrap.min.css") ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/slick.css") ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/slick-theme.css") ?>"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/style.css") ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/estilo.css") ?>">
     <title><?php echo $titulo ?></title>
 </head>
 <body>
@@ -37,7 +37,7 @@
       <input class="form-control mr-sm-2" type="text" name="conteudo" placeholder="Procurar" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
     </form>
-    
+
    
   </div>
 </nav>
