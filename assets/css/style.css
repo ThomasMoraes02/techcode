@@ -94,6 +94,17 @@ body * {
     margin: 100px 0;
 }
 
+.anime {
+    opacity: 0;
+    transform: translate3d(-50px, 0px, 0px);
+}
+
+.anime-init {
+    opacity: 1;
+    transition: .3s all ease;
+    transform: translate3d(0px, 0px, 0px);
+}
+
 
 /* Admin - Login */
 

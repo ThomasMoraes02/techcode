@@ -14,5 +14,5 @@
             </div>
             </div>
         </div>
-        <a href="<?php echo base_url("blog")?>" class="btn btn-dark mt-4">Voltar</a>
+        <a href="<?php echo base_url("")?>" class="btn btn-dark mt-4">Voltar</a>
 </section>

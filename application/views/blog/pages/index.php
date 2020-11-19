@@ -40,25 +40,6 @@
 				<?php form_close() ?>
 		</div>
 
-									<!--
-		<div class="col-md-12 blog-categoria">
-				<?php echo form_open("Blog/searchConteudo") ?>
-				<form>
-					<div class="row d-flex align-items-center">
-					<div class="col-md-2">
-							<label for="conteudo" class="lead">Buscar conteúdo:</label>
-					</div>
-					<div class="col-md-8">
-							<input type="text" name="conteudo" class="form-control form-control-sm" id="conteudo" placeholder="Digite o titulo que procura..." required>
-					</div>
-					<div class="col-md-2">
-						<button class="btn btn-dark btn-block" type="submit">Buscar</button>
-					</div>
-					</div>
-				</form>
-				<?php form_close() ?>
-		</div>
-									-->
 </section>		
 
 <section class="container">

@@ -9,6 +9,7 @@ Libraries
 *******************
 
 As bibliotecas utilizadas foram:
+
 - Upload
 - Form Validation
 - Session 
@@ -27,6 +28,7 @@ Helpers
 **************************
 
 Os auxiliares utilizados foram:
+
 - URL 
 - FORM 
 - Auxiliares_helper (Auxiliares gerais da aplicação)
